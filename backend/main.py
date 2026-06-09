@@ -18,9 +18,17 @@ def get_db():
 def home():
     return {'message':'Finally! MADE IT'}
 
-@app.post("/add")
+@app.get("/employees",response_model=list[E_response])
+def show_emp(db:Session=Depends(get_db)):
+    emps=db.query(Employee).all()
+    return emps
+
+
+@app.post("/add",response_model=E_response)
 def add_emp(newemp:E_create,db:Session=Depends(get_db)):
     emps=Employee(**newemp.model_dump())
     db.add(emps)
     db.commit()
     db.refresh(emps)
+
+    return emps
