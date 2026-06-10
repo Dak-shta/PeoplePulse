@@ -15,4 +15,17 @@ class E_response(BaseModel):
     department:str
     date_birth:date
     date_joining:date
+
+class Upcoming_days(BaseModel):
+    name:str
+    department:str
+    rem_days:int
+    birthday:date
+
+class Upcoming_anniv(BaseModel):
+    name:str
+    department:str
+    rem_days:int
+    years_completed:int
+    anniversary:date
     
