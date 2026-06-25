@@ -1,5 +1,12 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-db_url='sqlite:///peoplepulse.db'
-engine=create_engine(db_url)
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+db_url = os.getenv("DATABASE_URL")
+engine = create_engine(db_url)
+# db_url='sqlite:///peoplepulse3.db'
+# engine=create_engine(db_url)
 SessionLocal=sessionmaker(bind=engine,autocommit=False,autoflush=False)

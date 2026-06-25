@@ -28,4 +28,42 @@ class Upcoming_anniv(BaseModel):
     rem_days:int
     years_completed:int
     anniversary:date
-    
+
+class Upcoming_events(BaseModel):
+    name:str
+    department:str
+    event_type:str
+    event_date:date
+    rem_days:int
+    years_completed:int | None=None
+
+
+
+class CompanyCreate(BaseModel):
+    company_name: str
+    hr_name: str
+    hr_email: str
+
+
+
+class GoogleLogin(BaseModel):
+    token:str
+
+
+
+
+class SignupRequest(BaseModel):
+    company_name: str
+    hr_name: str
+    hr_email: str
+    password: str
+
+
+class LoginRequest(BaseModel):
+    hr_email: str
+    password: str
+
+class GoogleSignup(BaseModel):
+    # company_name:str
+    hr_name:str
+    hr_email:str
