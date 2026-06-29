@@ -3,6 +3,17 @@ from notifiication import check_birthdays, check_anniversary
 
 scheduler = BackgroundScheduler()
 
+# scheduler.add_job(
+#     check_birthdays,
+#     "interval",
+#     minutes=1
+# )
+# scheduler.add_job(
+#     check_anniversary,
+#     "interval",
+#     minutes=1
+# )
+
 scheduler.add_job(
     check_birthdays,
     "cron",

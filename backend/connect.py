@@ -6,7 +6,12 @@ import os
 load_dotenv()
 
 db_url = os.getenv("DATABASE_URL")
-engine = create_engine(db_url)
+
+engine = create_engine(
+    db_url,
+    pool_pre_ping=True,
+    pool_recycle=300
+)
 # db_url='sqlite:///peoplepulse3.db'
 # engine=create_engine(db_url)
 SessionLocal=sessionmaker(bind=engine,autocommit=False,autoflush=False)

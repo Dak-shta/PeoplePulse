@@ -339,8 +339,14 @@ def get_birth_emp(company_id:int,db:Session=Depends(get_db)):
 from datetime import date
 
 @app.get("/upcoming-birthdays/{email}")
-def upcoming_birthdays(db: Session = Depends(get_db)):
+def upcoming_birthdays(email:str, db: Session = Depends(get_db)):
     company=db.query(Company).filter(Company.hr_email==email).first()
+    if not company:
+        raise HTTPException(
+            status_code=404,
+            detail="Company not found"
+        )
+
     employees = db.query(Employee).filter(
     Employee.company_id == company.id
 ).all()
